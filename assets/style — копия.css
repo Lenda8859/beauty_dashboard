@@ -1,0 +1,32 @@
+/* Основной стиль */
+body {
+    background-color: #F8F9FA;
+    color: #4C5C68;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3, h4 {
+    color: #4C5C68;
+}
+
+.stButton > button {
+    background-color: #4C5C68;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+}
+
+.stSelectbox, .stTextInput, .stDateInput, .stMultiselect {
+    border: 1px solid #4C5C68 !important;
+    border-radius: 5px !important;
+}
+
+div[data-testid="stMetric"] {
+    background-color: #ffffff;
+    border-left: 4px solid #4C5C68;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
