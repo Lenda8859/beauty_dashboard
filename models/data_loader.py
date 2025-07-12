@@ -1,5 +1,5 @@
 import pandas as pd
-from fontTools.misc.plistlib import end_date
+
 from pandas import date_range
 from unicodedata import category
 
