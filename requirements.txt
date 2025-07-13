@@ -2,3 +2,4 @@ Streamlit
 Pandas
 Plotly
 Matplotlib
+Openpyxl
