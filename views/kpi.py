@@ -9,7 +9,9 @@ class KPIView:
         self.data_path = data_path
         self.loader = DataLoader(self.data_path)
 
+
     def get_filtered_data(self, df):
+
         df['дата'] = pd.to_datetime(df['дата'])
 
         min_date = df['дата'].min().date()
@@ -26,11 +28,28 @@ class KPIView:
         return filtered_df, start_date, end_date
 
     def render(self, df):
+        # Стилизация под мобильные устройства
+        st.markdown("""
+                     <style>
+                    .block-container {
+                    padding: 1rem 1 rem;
+                                }
+                    .css-1d391kg {  /* nf,kbws */
+                    font-size: 16px !important; }
+                    .stButton button {
+                    font-size: 18px !important:
+                    padding: 10px 20px;
+                        }
+                    </style>
+                """, unsafe_allow_html=True)
+
         st.title("📊 KPI — Ключевые показатели")
 
         filtered_df, start_date, end_date = self.get_filtered_data(df)
         st.subheader(f"Данные за период: {start_date} — {end_date}")
+        st.markdown("<div style='overflow-x: auto'>", unsafe_allow_html=True)
         st.dataframe(filtered_df)
+        st.markdown("<div>", unsafe_allow_html=True)
 
         # KPI: Средний чек
         if 'сумма' in filtered_df.columns:

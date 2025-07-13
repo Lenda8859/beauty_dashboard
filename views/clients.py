@@ -16,10 +16,29 @@ class ClientsView:
         return date_range, category_col, category_val
 
     def render(self, df):
-        st.title("👥 Информация о клиентах")
-        st.subheader("📊 Общая статистика")
+        # Стилизация под мобильные устройства
+        st.markdown("""
+                             <style>
+                            .block-container {
+                            padding: 1rem 1 rem;
+                                        }
+                            .css-1d391kg {  /* nf,kbws */
+                            font-size: 16px !important; }
+                            .stButton button {
+                            font-size: 18px !important:
+                            padding: 10px 20px;
+                                }
+                            </style>
+                        """, unsafe_allow_html=True)
 
+        st.title("👥 Информация о клиентах")
+
+        st.subheader("📊 Общая статистика")
+        st.markdown("<div style='overflow-x: auto'>", unsafe_allow_html=True)
         st.dataframe(df)
+        st.markdown("<div>", unsafe_allow_html=True)
+
+
 
         if "Услуга" in df.columns:
             service_counts = df["услуга"].value_counts().reset_index()

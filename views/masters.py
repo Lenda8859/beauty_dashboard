@@ -23,6 +23,20 @@ class MastersView:
         return selected_master, start_date, end_date
 
     def render(self, df):
+        # Стилизация под мобильные устройства
+        st.markdown("""
+                                <style>
+                                .block-container {
+                                padding: 1rem 1 rem;
+                                }
+                                .css-1d391kg {  /* nf,kbws */
+                                font-size: 16px !important; }
+                                .stButton button {
+                                font-size: 18px !important:
+                                padding: 10px 20px;
+                                }
+                                </style>
+                        """, unsafe_allow_html=True)
         st.title("🧑‍🎨 Аналитика по мастерам")
 
         # Получаем фильтры
@@ -41,7 +55,9 @@ class MastersView:
         ]
 
         st.subheader(f"📅 Период: {start_date.date()} — {end_date.date()}")
+        st.markdown("<div style='overflow-x: auto'>", unsafe_allow_html=True)
         st.dataframe(filtered_df)
+        st.markdown("<div>", unsafe_allow_html=True)
 
         # 1. Круговая диаграмма — распределение по услугам
         if 'Услуга' in filtered_df.columns:
