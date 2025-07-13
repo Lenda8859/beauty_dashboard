@@ -69,7 +69,7 @@ class KPIView:
         activity = filtered_df.groupby('дата').size().reset_index(name='количество')
         fig1 = px.line(activity, x='дата', y='количество', title='Количество услуг по датам',
                        color_discrete_sequence=['#4C5C68'])
-        st.plotly_chart(fig1)
+        st.plotly_chart(fig1, use_container_width=True, config={"displayModeBar": False})
 
         # 🌀 Распределение по услугам
         st.subheader("🌀 Распределение по услугам")
@@ -77,7 +77,7 @@ class KPIView:
         service_counts.columns = ['услуга', 'количество']
         fig2 = px.pie(service_counts, names='услуга', values='количество',
                       color_discrete_sequence=['#4C5C68', '#EEC07C'])
-        st.plotly_chart(fig2)
+        st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
 
         # 📊 Загрузка мастеров
         st.subheader("📊 Нагрузка по мастерам")
@@ -85,4 +85,4 @@ class KPIView:
         master_counts.columns = ['мастер', 'количество']
         fig3 = px.bar(master_counts, x='мастер', y='количество',
                       color_discrete_sequence=['#4C5C68'])
-        st.plotly_chart(fig3)
+        st.plotly_chart(fig3, use_container_width=True, config={"displayModeBar": False})

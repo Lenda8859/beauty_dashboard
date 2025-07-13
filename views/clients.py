@@ -44,16 +44,16 @@ class ClientsView:
             service_counts = df["услуга"].value_counts().reset_index()
             service_counts.columns = ["услуга", "количество"]
             fig_pie = px.pie(service_counts, names="услуга", values="количество", title="Распределение по услугам")
-            st.plotly_chart(fig_pie)
+            st.plotly_chart(fig_pie, use_container_width=True, config={"displayModeBar": False})
 
         if "мастер" in df.columns:
             bar_data = df["мастер"].value_counts().reset_index()
             bar_data.columns = ["мастер", "количество"]
             fig_bar = px.bar(bar_data, x="мастер", y="количество", title="Количество клиентов по мастерам")
-            st.plotly_chart(fig_bar)
+            st.plotly_chart(fig_bar, use_container_width=True, config={"displayModeBar": False})
 
         if "дата" in df.columns:
             line_data = df.groupby("дата").size().reset_index(name="клиенты")
             fig_line = px.line(line_data, x="дата", y="клиенты", title="Клиенты по датам")
-            st.plotly_chart(fig_line)
+            st.plotly_chart(fig_line, use_container_width=True, config={"displayModeBar": False})
 

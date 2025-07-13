@@ -39,7 +39,7 @@ class ReportsView:
         master_summary.columns = ['мастер', 'количество']
         fig1 = px.bar(master_summary, x='мастер', y='количество',
                       color_discrete_sequence=['#4C5C68'])
-        st.plotly_chart(fig1)
+        st.plotly_chart(fig1, use_container_width=True, config={"displayModeBar": False})
 
         # 🌀 Услуги по категориям
         st.subheader("🌀 Популярность услуг")
@@ -47,7 +47,7 @@ class ReportsView:
         service_summary.columns = ['услуга', 'количество']
         fig2 = px.pie(service_summary, names='услуга', values='количество',
                       color_discrete_sequence=['#4C5C68', '#EEC07C'])
-        st.plotly_chart(fig2)
+        st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
 
         # 📈 Динамика количества клиентов
         st.subheader("📈 Количество клиентов по датам")
@@ -55,7 +55,7 @@ class ReportsView:
         client_daily.columns = ['дата', 'Уникальных клиентов']
         fig3 = px.line(client_daily, x='дата', y='Уникальных клиентов',
                        color_discrete_sequence=['#4C5C68'])
-        st.plotly_chart(fig3)
+        st.plotly_chart(fig3, use_container_width=True, config={"displayModeBar": False})
 
         # 💸 Средний чек по датам
         if 'сумма' in df.columns:
@@ -63,4 +63,4 @@ class ReportsView:
             avg_price_by_date = df.groupby('дата')['сумма'].mean().reset_index()
             fig4 = px.line(avg_price_by_date, x='дата', y='сумма',
                            title='Средний чек по датам', color_discrete_sequence=['#EEC07C'])
-            st.plotly_chart(fig4)
+            st.plotly_chart(fig4, use_container_width=True, config={"displayModeBar": False})

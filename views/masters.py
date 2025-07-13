@@ -65,14 +65,14 @@ class MastersView:
             pie_data = filtered_df['Услуга'].value_counts().rename_axis('Услуга').reset_index(name='количество')
             fig_pie = px.pie(pie_data, names='Услуга', values='количество',
                              color_discrete_sequence=['#4C5C68', '#EEC07C'])
-            st.plotly_chart(fig_pie)
+            st.plotly_chart(fig_pie, use_container_width=True, config={"displayModeBar": False})
 
         # 2. Линейный график — количество клиентов по дням
         st.subheader("📈 Загрузка по датам")
         line_data = filtered_df.groupby('дата').size().reset_index(name='количество')
         fig_line = px.line(line_data, x='дата', y='количество',
                            color_discrete_sequence=['#4C5C68'])
-        st.plotly_chart(fig_line)
+        st.plotly_chart(fig_line, use_container_width=True, config={"displayModeBar": False})
 
         # 3. Гистограмма — частота по услугам
         if 'услуга' in filtered_df.columns:
@@ -81,4 +81,4 @@ class MastersView:
             bar_data.columns = ['услуга', 'количество']
             fig_bar = px.bar(bar_data, x='услуга', y='количество',
                              color_discrete_sequence=['#4C5C68'])
-            st.plotly_chart(fig_bar)
+            st.plotly_chart(fig_bar, use_container_width=True, config={"displayModeBar": False})
